@@ -84,7 +84,7 @@ USER $USER
 WORKDIR $HOME
 
 # install cpanm
-RUN curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+RUN curl -L http://cpanmin.us | perl - --sudo App::cpanminus && \
     cpanm --sudo Fuse.pm IPC/Run.pm
 
 RUN wget -O lftpfs.tar.gz https://sourceforge.net/projects/lftpfs/files/lftpfs/lftpfs-0.4.3/lftpfs-0.4.3.tar.gz/download && \
