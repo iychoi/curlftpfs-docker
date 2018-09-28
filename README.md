@@ -1,2 +1,2 @@
-# curlftpfs-docker
-A docker image for curlftpfs
+# sdmbench-docker
+A docker image for sdmbench

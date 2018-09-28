@@ -1,0 +1,15 @@
+# docker-compose.yml
+
+version: '2'
+
+services:
+  sdmbench:
+    image: sdmbench
+    build:
+      context: .
+      dockerfile: Dockerfile
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    cap_add:
+      - SYS_ADMIN
+    privileged: true
