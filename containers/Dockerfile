@@ -130,7 +130,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     rm -rf /var/lib/apt /var/lib/cache /var/lib/log
 
 USER $USER
-RUN wget -O fskit.zip https://github.com/jcnelson/fskit/archive/master.zip && \
+RUN wget -O fskit.zip https://github.com/iychoi/fskit/archive/master.zip && \
     unzip fskit.zip && mv fskit-master fskit
 WORKDIR "fskit"
 RUN make
