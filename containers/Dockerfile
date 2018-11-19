@@ -131,7 +131,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     irods-externals-cmake3.5.2 irods-externals-clang3.8-0 irods-externals-cppzmq4.1-0 \
     irods-externals-libarchive3.1.2-0 irods-externals-avro1.7.7-0 irods-externals-boost1.60.0-0 \
     irods-externals-clang-runtime3.8-0 irods-externals-jansson2.7-0 irods-externals-zeromq4-14.1.3-0 \
-    irods-icommands && \
+    irods-icommands libxml2 && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt /var/lib/cache /var/lib/log
