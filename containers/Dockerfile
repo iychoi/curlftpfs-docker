@@ -120,6 +120,39 @@ RUN rm -rf curlftpfs
 
 
 ##############################################
+# iRODS-FUSE
+##############################################
+WORKDIR $HOME
+RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | apt-key add -
+RUN echo "deb [arch=amd64] https://packages.irods.org/apt/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/renci-irods.list
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install -y --allow-unauthenticated --no-install-recommends \
+    irods-dev irods-runtime \
+    irods-externals-cmake3.5.2 irods-externals-clang3.8-0 irods-externals-cppzmq4.1-0 \
+    irods-externals-libarchive3.1.2-0 irods-externals-avro1.7.7-0 irods-externals-boost1.60.0-0 \
+    irods-externals-clang-runtime3.8-0 irods-externals-jansson2.7-0 irods-externals-zeromq4-14.1.3-0 \
+    irods-icommands && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt /var/lib/cache /var/lib/log
+
+USER $USER
+RUN wget -O irods_client_fuse.zip https://github.com/irods/irods_client_fuse/archive/master.zip && \
+    unzip irods_client_fuse.zip && \
+    rm irods_client_fuse.zip && \
+    mv irods_client_fuse-master irods_client_fuse
+
+WORKDIR irods_client_fuse
+ENV LD_LIBRARY_PATH /opt/irods-externals/clang-runtime3.8-0/lib/
+ENV PATH $PATH:/opt/irods-externals/cmake3.5.2-0/bin
+RUN cmake . && \
+    make
+
+USER root
+WORKDIR $HOME
+
+
+##############################################
 # fskit
 ##############################################
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
