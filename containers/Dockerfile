@@ -41,11 +41,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 
 
 ##############################################
-# Setup Mash
+# Setup Mash 2.0
 ##############################################
 USER $USER
 WORKDIR $HOME
-RUN wget -O mash.zip https://github.com/marbl/Mash/archive/master.zip && \
+RUN wget -O mash.zip https://github.com/marbl/Mash/archive/v2.0.zip && \
     unzip mash.zip && \
     rm mash.zip && \
     mv Mash-master mash
