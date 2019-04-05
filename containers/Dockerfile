@@ -31,7 +31,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y --allow-unauthenticated --no-install-recommends \
     wget curl unzip python-pip build-essential autoconf \
     capnproto libcapnp-dev libcapnp-0.4.0 libglib2.0-dev libcurl4-gnutls-dev \
-    libgsl0ldbl libgsl0-dev gsl-bin zlib1g-dev zlib1g \
+    libgsl0ldbl libgsl0-dev gsl-bin zlib1g-dev zlib1g capnproto \
     ssh fuse git apt-transport-https pkg-config libfuse-dev && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
