@@ -120,6 +120,24 @@ RUN rm -rf curlftpfs
 
 
 ##############################################
+# Setup GlobusFTP
+##############################################
+USER $USER
+WORKDIR $HOME
+RUN wget -O globus-toolkit-repo_latest_all.deb http://www.globus.org/ftppub/gt6/installers/repo/globus-toolkit-repo_latest_all.deb
+
+USER root
+RUN dpkg -i globus-toolkit-repo_latest_all.deb && \
+    apt-get install -y --allow-unauthenticated --no-install-recommends \
+    globus-gridftp && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt /var/lib/cache /var/lib/log
+
+RUN rm -rf globus-toolkit-repo_latest_all.deb
+
+
+##############################################
 # iRODS-FUSE
 ##############################################
 WORKDIR $HOME
