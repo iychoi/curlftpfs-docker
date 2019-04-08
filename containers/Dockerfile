@@ -128,6 +128,7 @@ RUN wget -O globus-toolkit-repo_latest_all.deb http://www.globus.org/ftppub/gt6/
 
 USER root
 RUN dpkg -i globus-toolkit-repo_latest_all.deb && \
+    DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y --allow-unauthenticated --no-install-recommends \
     globus-gridftp && \
     apt-get clean autoclean && \
