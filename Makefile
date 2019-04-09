@@ -6,6 +6,7 @@ all: up
 
 build:
 	$(DOCKER_COMPOSE) build
+	@docker tag sdmbench syndicatestorage/sdmbench
 
 up: build
 	-$(DOCKER_COMPOSE) run sdmbench
