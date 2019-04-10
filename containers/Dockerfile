@@ -32,7 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     wget curl unzip python-pip build-essential autoconf \
     capnproto libcapnp-dev libcapnp-0.4.0 libglib2.0-dev libcurl4-gnutls-dev \
     libgsl0ldbl libgsl0-dev gsl-bin zlib1g-dev zlib1g libcapnp-dev \
-    ssh fuse git apt-transport-https pkg-config libfuse-dev && \
+    ssh fuse git apt-transport-https pkg-config libfuse-dev parallel && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt /var/lib/cache /var/lib/log && \
