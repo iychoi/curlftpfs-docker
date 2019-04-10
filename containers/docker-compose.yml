@@ -13,3 +13,5 @@ services:
     cap_add:
       - SYS_ADMIN
     privileged: true
+    volumes:
+      - ../benchmark_data:/home/syndicate/benchmark_data/:ro
